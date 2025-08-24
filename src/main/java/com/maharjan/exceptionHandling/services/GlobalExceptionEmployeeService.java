@@ -1,5 +1,6 @@
 package com.maharjan.exceptionHandling.services;
 
+import com.maharjan.exceptionHandling.customExceptions.BusinessException;
 import com.maharjan.exceptionHandling.entity.Employee;
 import com.maharjan.exceptionHandling.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,18 @@ public class GlobalExceptionEmployeeService {
     }
 
     public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+        List<Employee> employeeList = employeeRepository.findAll();
+        if (employeeList.isEmpty()) {
+            throw new BusinessException("604","The list is empty. Nothing to return.");
+        }
+        return employeeList;
     }
 
     public Employee saveEmployee(Employee employee) {
+        if (employee.getName().isEmpty()) {
+            throw new BusinessException("601","Please send proper name. It is currently blank.");
+        }
+
         return employeeRepository.save(employee);
     }
 
