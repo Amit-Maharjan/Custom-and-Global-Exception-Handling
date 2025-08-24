@@ -3,7 +3,7 @@ package com.maharjan.exceptionHandling.controllers;
 import com.maharjan.exceptionHandling.customExceptions.BusinessException;
 import com.maharjan.exceptionHandling.customExceptions.ControllerException;
 import com.maharjan.exceptionHandling.entity.Employee;
-import com.maharjan.exceptionHandling.services.EmployeeService;
+import com.maharjan.exceptionHandling.services.CustomExceptionEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +13,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
-public class EmployeeController {
+public class CustomExceptionEmployeeController {
     @Autowired
-    private EmployeeService employeeService;
+    private CustomExceptionEmployeeService employeeService;
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getEmployeeById(@PathVariable Long id) {

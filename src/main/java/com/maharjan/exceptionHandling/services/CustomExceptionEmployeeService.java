@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
-public class EmployeeService {
+public class CustomExceptionEmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
