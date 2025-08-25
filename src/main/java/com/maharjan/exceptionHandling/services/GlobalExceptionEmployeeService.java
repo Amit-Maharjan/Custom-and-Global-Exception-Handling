@@ -1,6 +1,7 @@
 package com.maharjan.exceptionHandling.services;
 
 import com.maharjan.exceptionHandling.customExceptions.BusinessException;
+import com.maharjan.exceptionHandling.customExceptions.EmptyInputException;
 import com.maharjan.exceptionHandling.entity.Employee;
 import com.maharjan.exceptionHandling.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class GlobalExceptionEmployeeService {
 
     public Employee saveEmployee(Employee employee) {
         if (employee.getName().isEmpty()) {
-            throw new BusinessException("601","Please send proper name. It is currently blank.");
+            throw new EmptyInputException("601","Input Fields are Empty.");
         }
 
         return employeeRepository.save(employee);
